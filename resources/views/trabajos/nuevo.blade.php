@@ -114,28 +114,4 @@
     </form>
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Evita que el formulario se envíe automáticamente
-
-        Swal.fire({
-            title: "¡Registro Guardado Exitosamente!",
-            text: "Presiona el botón para regresar al listado de trabajos.",
-            icon: "success",
-            confirmButtonText: "Regresar al listado",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "{{ url('trabajos') }}"; // Redirecciona al listado de trabajos
-            } else {
-                form.submit(); // Envía el formulario si el usuario confirma la acción
-            }
-        });
-    });
-});
-</script>
 @endsection

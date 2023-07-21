@@ -37,19 +37,16 @@ class TrabajosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $trabajo = request()->except('_token');
-        if($request->hasFile('archivo')){
-           // $trabajo['archivo'] = $request->file('archivo')->store('archivos');
-            $trabajo['archivo'] = $request->file('archivo')->getClientOriginalName();
-            $request->file('archivo')->storeAs('archivosPDF', $trabajo['archivo']);
-        }
-        Trabajos::insert($trabajo);
-        //return response()->json($trabajo);
-        return redirect()->route('trabajos.create');
-
-        
+{
+    $trabajo = $request->except('_token');
+    if ($request->hasFile('archivo')) {
+        $trabajo['archivo'] = $request->file('archivo')->getClientOriginalName();
+        $request->file('archivo')->storeAs('archivosPDF', $trabajo['archivo']);
     }
+    Trabajos::insert($trabajo);
+    return redirect()->route('trabajos.index');
+}
+
 
     /**
      * Display the specified resource.
@@ -69,10 +66,59 @@ class TrabajosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $trabajo = Trabajos::find($id);
-        return view('trabajos.editar', compact('trabajo'));
-    }
+{
+    $trabajo = Trabajos::find($id);
+    $facultades = ['Facultad de Ingeniería y Arquitectura', 'Facultad de Ciencias y Humanidades', 'Facultad de Ciencias de la Salud', 'Facultad de Ciencias Empresariales', 'Escuela de Posgrados'];
+    $carreras = [
+        'Licenciatura en Idioma Ingles',
+        'Licenciatura en periodismo y comunicación audiovisual',
+        'Licenciatura en enfermeria',
+        'Tecnico en enfermeria',
+        'Licenciatura en ciencias de la educacion con especialidad en idioma inglés',
+        'Doctorado en medicina',
+        'Licenciatura en ciencias de la educacion con especialidad en educacion basica',
+        'Profesorado en educacion basica para primero y segundo ciclo',
+        'Profesorado en educación parvularia',
+        'Licenciatura en ciencias religiosas',
+        'Licenciatura en ciencias de la educacion con especialidad en educacion parvularia',
+        'Licenciatura en educacion inicial y parvularia',
+        'Licenciatura en ciencias de la educacion especialidad en matematica semipresencial',
+        'Licenciatura en ciencias de la educacion especialidad en direccion y administracion escolar - semipresencial',
+        'Licenciatura en ciencias de la educacion especialidad en educacion basica semipresencial',
+        'Licenciatura en idioma ingles (semipresencial)',
+        'Profesorado en educacion basica para primero y segundo ciclos',
+        'Profesorado y licenciatura en educacion inicial y parvularia',
+        'Licenciatura en idioma ingles',
+        'Licenciatura en diseño grafico publicitario',
+        'Ingenieria en tecnologia y procesamiento de alimentos',
+        'Licenciatura en ciencias juridicas',
+        'Licenciatura en sistemas informaticos administrativos',
+        'Ingenieria industrial',
+        'Arquitectura',
+        'Ingenieria civil',
+        'Ingenieria civil saneamiento ambiental',
+        'Ingenieria en sistemas informaticos',
+        'Ingenieria agronomica',
+        'Ingenieria en telecomunicaciones y redes',
+        'Ingenieria en desarrollo de software',
+        'Curso ccna academia de redes cisco unicaes',
+        'Licenciatura en administracion de empresas',
+        'Licenciatura en mercadeo y negocios internacionales',
+        'Licenciatura en gestion y desarrollo turistico',
+        'Licenciatura en contaduria publica',
+        'Postgrado en estrategias para la competitividad',
+        'Maestria en direccion estrategica de empresas',
+        'Maestria en asesoria educativa',
+        'Maestria en atencion integral de la primera infancia',
+        'Maestria en gerencia y gestion ambiental',
+        'Maestria en gestion y desarrollo turistico',
+        'Curso de formacion pedagica para profesionales',
+        'Licenciatura en administracion de empresas - semipresencial'
+    ];
+
+    return view('trabajos.editar', compact('trabajo', 'facultades', 'carreras'));
+}
+
 
     /**
      * Update the specified resource in storage.

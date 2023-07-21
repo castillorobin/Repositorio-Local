@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-               <img src="imagenes/logou.png" alt="" style="width:75px;">     Repositorio Local
+                    <img src="imagenes/logou.png" alt="" style="width: 75px;"> Repositorio Local
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,17 +33,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav mr-auto nav-pills">
-                    <li class="nav-item">
-                     <a class="nav-link active" href="{{ route('home') }}">Inicio</a>
-                        </li>
-                    <li class="nav-item">
-                     <a class="nav-link" href="{{ route('trabajos.index') }}">Listado</a>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('home') }}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                     <a class="nav-link" href="{{ route('trabajos.create') }}">Agregar</a>
+                            <a class="nav-link" href="{{ route('trabajos.index') }}">Listado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('trabajos.create') }}">Agregar</a>
                         </li>
                     </ul>
-                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -54,7 +53,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                                 </li>
                             @endif
-<!--
+                            <!--
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
