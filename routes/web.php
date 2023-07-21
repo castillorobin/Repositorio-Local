@@ -25,3 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route::get('/trabajos/nuevo', [App\Http\Controllers\TrabajosController::class, 'create'])->name('Agregar Trabajos');
 //Route::post('/trabajos/guardar', [App\Http\Controllers\TrabajosController::class, 'store'])->name('Guardar');
 Route::resource('trabajos', 'App\Http\Controllers\TrabajosController');
+Route::get('/descargar/{id}', 'App\Http\Controllers\TrabajosController@descargarArchivo')->name('trabajos.descargar');
+
+
+
+

@@ -64,9 +64,12 @@
   <br>
   
   <div class="col-3 p-0">
-  <input type="submit" class="form-control btn btn-primary""  placeholder="">
+    <div class="d-flex">
+        <input type="submit" class="flex-grow-1 me-1 mr-2 form-control btn btn-primary" value="Guardar">
+        <a href="{{ url('trabajos') }}" class="flex-grow-1 ms-1 ml-2 btn btn-secondary">Regresar</a>
+    </div>
 </div>
-  </div>
+  </div>  
   </form>
   </div>
 @endsection
