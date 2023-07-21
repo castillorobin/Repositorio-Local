@@ -115,18 +115,23 @@ class TrabajosController extends Controller
     }
 
     public function descargarArchivo($id)
-    {
-        $trabajo = Trabajos::find($id);
-        if (!$trabajo) {
-            abort(404); 
-        }
-        $nombreArchivo = $trabajo->archivo;
-        $rutaArchivo = storage_path('app/archivosPDF/' . $nombreArchivo);
-        if (Storage::exists('archivosPDF/' . $nombreArchivo)) {
-            
-            return response()->download($rutaArchivo, $nombreArchivo);
-        } else {
-            abort(404); 
-        }
+{
+    $trabajo = Trabajos::find($id);
+
+    if (!$trabajo) {
+        abort(404); 
     }
+
+    $nombreArchivo = $trabajo->archivo;
+    $rutaArchivo = storage_path('app/archivosPDF/' . $nombreArchivo);
+    if (Storage::exists('archivosPDF/' . $nombreArchivo)) {
+        
+        return response()->download($rutaArchivo, $nombreArchivo);
+    } else {
+        abort(404); 
+    }
+}
+
+
+
 }
