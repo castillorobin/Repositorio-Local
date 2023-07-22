@@ -40,11 +40,12 @@
                         <td>{{$traba->carrera}}</td>
                         <td>
                             @if ($traba->archivo)
-                                <a href="{{ route('trabajos.descargar', ['id' => $traba->id]) }}" class="btn btn-success">Descargar</a>
+                                <a href="{{ route('trabajos.descargar', ['id' => $traba->id, 'timestamp' => time()]) }}" class="btn btn-success">Descargar</a>
                             @else
                                 No disponible
                             @endif
                         </td>
+
                         <td>
                             <a href="{{ route('trabajos.edit', ['trabajo' => $traba->id]) }}" class="btn btn-primary">Editar</a>
                         </td>

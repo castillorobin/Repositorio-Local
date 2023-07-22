@@ -138,6 +138,12 @@ class TrabajosController extends Controller
         $trabajoData = $request->except('_token');
     
         if ($request->hasFile('archivo')) {
+            // Eliminar el archivo original si existe
+            if ($trabajo->archivo && Storage::exists('archivosPDF/' . $trabajo->archivo)) {
+                Storage::delete('archivosPDF/' . $trabajo->archivo);
+            }
+    
+            // Almacenar el nuevo archivo con un nombre único
             $trabajoData['archivo'] = $request->file('archivo')->getClientOriginalName();
             $request->file('archivo')->storeAs('archivosPDF', $trabajoData['archivo']);
         }
@@ -147,6 +153,7 @@ class TrabajosController extends Controller
         // Redirigir a la página de trabajos después de la actualización
         return redirect()->route('trabajos.index');
     }
+    
     
 
     /**
@@ -161,23 +168,23 @@ class TrabajosController extends Controller
     }
 
     public function descargarArchivo($id)
-{
-    $trabajo = Trabajos::find($id);
-
-    if (!$trabajo) {
-        abort(404); 
+    {
+        $trabajo = Trabajos::find($id);
+    
+        if (!$trabajo) {
+            abort(404);
+        }
+    
+        $nombreArchivo = $trabajo->archivo;
+        $rutaArchivo = storage_path('app/archivosPDF/' . $nombreArchivo);
+    
+        if (Storage::exists('archivosPDF/' . $nombreArchivo)) {
+            return response()->download($rutaArchivo, $nombreArchivo);
+        } else {
+            abort(404);
+        }
     }
-
-    $nombreArchivo = $trabajo->archivo;
-    $rutaArchivo = storage_path('app/archivosPDF/' . $nombreArchivo);
-    if (Storage::exists('archivosPDF/' . $nombreArchivo)) {
-        
-        return response()->download($rutaArchivo, $nombreArchivo);
-    } else {
-        abort(404); 
-    }
-}
-
+    
 
 
 }

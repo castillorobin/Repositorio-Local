@@ -75,7 +75,7 @@
         <div class="col-3 p-0">
             <div class="d-flex">
             <button type="submit" id="guardarBtn" class="flex-grow-1 me-1 mr-2 form-control btn btn-primary">Guardar</button>
-                <a href="{{ url('trabajos') }}" class="flex-grow-1 ms-1 ml-2 btn btn-secondary">Regresar</a>
+            <a href="{{ url('trabajos') }}" class="flex-grow-1 ms-1 ml-2 btn btn-secondary">Regresar</a>
             </div>
         </div>
 
