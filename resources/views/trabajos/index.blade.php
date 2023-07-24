@@ -40,14 +40,14 @@
                         <td>{{$traba->carrera}}</td>
                         <td>
                             @if ($traba->archivo)
-                                <a href="{{ route('trabajos.descargar', ['id' => $traba->id, 'timestamp' => time()]) }}" class="btn btn-success">Descargar</a>
+                                <a href="{{ route('trabajos.descargar', ['id' => $traba->id, 'timestamp' => time()]) }}" class="btn btn-success navbar-button">Descargar</a>
                             @else
                                 No disponible
                             @endif
                         </td>
 
                         <td>
-                            <a href="{{ route('trabajos.edit', ['trabajo' => $traba->id]) }}" class="btn btn-primary">Editar</a>
+                            <a href="{{ route('trabajos.edit', ['trabajo' => $traba->id]) }}" class="btn btn-primary navbar-button">Editar</a>
                         </td>
                     </tr>
                     @endforeach
@@ -56,5 +56,25 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Estilo para los botones de descarga y editar */
+    .navbar-button {
+        color: #9D2720;
+        background-color: #F6C03D;
+        border: none;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .navbar-button:hover {
+        background-color: #9D2720;
+        color: #F6C03D;
+        transition: 0.3s;
+    }
+</style>
 
 @endsection
