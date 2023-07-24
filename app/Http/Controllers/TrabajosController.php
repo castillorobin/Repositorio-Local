@@ -113,7 +113,11 @@ class TrabajosController extends Controller
         'Maestria en gerencia y gestion ambiental',
         'Maestria en gestion y desarrollo turistico',
         'Curso de formacion pedagica para profesionales',
-        'Licenciatura en administracion de empresas - semipresencial'
+        'Licenciatura en administracion de empresas - semipresencial',
+        'Maestría en Seguridad Informática',
+        'Licenciatura en Ciencias de la Educación Especialidad en Matemática (Ingreso solo por equivalencias)',
+        'Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)',
+        'Maestría en Asesoría Educativa'
     ];
 
     return view('trabajos.editar', compact('trabajo', 'facultades', 'carreras'));

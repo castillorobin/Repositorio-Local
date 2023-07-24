@@ -1,115 +1,204 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #007BFF;
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .form-select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: #f8f8f8;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        outline: none;
+        border-color: #007BFF;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007BFF;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .form-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .form-btn-secondary {
+        background-color: #6c757d;
+    }
+
+    .form-btn-secondary:hover {
+        background-color: #4b545c;
+    }
+
+    .d-flex {
+        display: flex;
+    }
+
+    .flex-grow-1 {
+        flex-grow: 1;
+    }
+
+    .me-1 {
+        margin-right: 5px;
+    }
+
+    .mr-2 {
+        margin-right: 10px;
+    }
+
+    .ms-1 {
+        margin-left: 5px;
+    }
+
+    .ml-2 {
+        margin-left: 10px;
+    }
+</style>
+
 <h1 class="text-center">Agregar un Nuevo Trabajo</h1>
 <div class="container">
-
     <form method="POST" action="{{ route('trabajos.store') }}" role="form" enctype="multipart/form-data">
         @csrf
 
-        <br>
-        <div class="col-6 p-0">
-            <label for="ano" class="form-label">Tipo</label>
-            <br>
-            <select name="tipo" class="form-select form-select-lg" aria-label="Default select example">
+        <div class="form-group">
+            <label for="tipo" class="form-label">Tipo</label>
+            <select name="tipo" class="form-select">
                 <option selected>Pasantia</option>
                 <option value="Investigacion">Investigacion</option>
                 <option value="Tesis">Tesis</option>
             </select>
         </div>
-        <br>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label for="titulo" class="form-label">Título</label>
             <input type="text" name="titulo" class="form-control" placeholder="">
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label for="autor" class="form-label">Autor</label>
             <input type="text" name="autor" class="form-control" placeholder="">
         </div>
 
-        <div class="col-3 p-0">
-            <label for="año" class="form-label">Año</label>
-            <input type="number" name="año" class="form-control" placeholder="">
+        <div class="d-flex">
+            <div class="flex-grow-1 me-1">
+                <label for="año" class="form-label">Año</label>
+                <input type="number" name="año" class="form-control" placeholder="">
+            </div>
+            <div class="flex-grow-1 ms-1">
+                <label for="facultad" class="form-label">Facultad</label>
+                <select name="facultad" class="form-select">
+                <option selected>Facultad de Ingeniería y Arquitectura</option>
+                <option value="Facultad de Ciencias y Humanidades">Facultad de Ciencias y Humanidades</option>
+                <option value="Facultad de Ciencias de la Salud">Facultad de Ciencias de la Salud</option>
+                <option value="Facultad de Ciencias Empresariales">Facultad de Ciencias Empresariales</option>
+                <option value="Escuela de Posgrados">Escuela de Posgrados</option>
+                </select>
+            </div>
         </div>
-        <br>
-        <div class="col-6 p-0">
-            <label for="facultad" class="form-label">Facultad</label>
-            <br>
-            <select name="facultad" class="form-select form-select-lg" aria-label="Default select example">
-            <option selected>Facultad de Ingeniería y Arquitectura</option>
-            <option value="Facultad de Ciencias y Humanidades">Facultad de Ciencias y Humanidades</option>
-            <option value="Facultad de Ciencias de la Salud">Facultad de Ciencias de la Salud</option>
-            <option value="Facultad de Ciencias Empresariales">Facultad de Ciencias Empresariales</option>
-            <option value="Escuela de Posgrados">Escuela de Posgrados</option>
-            </select>
-        </div>
-        <br>
 
-        <div class="col-6 p-0">
+        <div class="form-group">
             <label for="carrera" class="form-label">Carrera</label>
-            <br>
-            <select name="carrera" class="form-select form-select-lg" aria-label="Default select example">
+            <select name="carrera" class="form-select">
             <option selected>Licenciatura en Idioma Ingles</option>
-            <option value="Licenciatura en periodismo y comunicación audiovisual">Licenciatura en periodismo y comunicación audiovisual</option>
-            <option value="Licenciatura en enfermeria">Licenciatura en enfermeria</option>
-            <option value="Tecnico en enfermeria">Tecnico en enfermeria</option>
-            <option value="Licenciatura en ciencias de la educacion con especialidad en idioma inglés">Licenciatura en ciencias de la educacion con especialidad en idioma inglés</option>
-            <option value="Doctorado en medicina">Doctorado en medicina</option>
-            <option value="Licenciatura en ciencias de la educacion con especialidad en educacion basica">Licenciatura en ciencias de la educacion con especialidad en educacion basica</option>
-            <option value="Profesorado en educacion basica para primero y segundo ciclo">Profesorado en educacion basica para primero y segundo ciclo</option>
-            <option value="Profesorado en educación parvularia">Profesorado en educación parvularia</option>
-            <option value="Licenciatura en ciencias religiosas">Licenciatura en ciencias religiosas</option>
-            <option value="Licenciatura en ciencias de la educacion con especialidad en educacion parvularia">Licenciatura en ciencias de la educacion con especialidad en educacion parvularia</option>
-            <option value="Licenciatura en educacion inicial y  parvularia">Licenciatura en educacion inicial y  parvularia</option>
-            <option value="Licenciatura en ciencias de la educacion especialidad en matematica semipresencial">Licenciatura en ciencias de la educacion especialidad en matematica semipresencial</option>
-            <option value="Licenciatura en ciencias de la educacion especialidad en direccion y administracion escolar - semipresencial">Licenciatura en ciencias de la educacion especialidad en direccion y administracion escolar - semipresencial</option>
-            <option value="Licenciatura en ciencias de la educacion especialidad en educacion basica semipresencial">Licenciatura en ciencias de la educacion especialidad en educacion basica semipresencial</option>
-            <option value="Licenciatura en idioma ingles (semipresencial)">Licenciatura en idioma ingles (semipresencial)</option>
-            <option value="Profesorado en educacion  basica para primero y segundo ciclos">Profesorado en educacion  basica para primero y segundo ciclos</option>
-            <option value="Profesorado y licenciatura en educacion inicial y parvularia">Profesorado y licenciatura en educacion inicial y parvularia</option>
-            <option value="Licenciatura en idioma ingles">Licenciatura en idioma ingles</option>
-            <option value="Licenciatura en diseño grafico publicitario">Licenciatura en diseño grafico publicitario</option>
-            <option value="Ingenieria en tecnologia y procesamiento de alimentos">Ingenieria en tecnologia y procesamiento de alimentos</option>
-            <option value="Licenciatura en ciencias juridicas">Licenciatura en ciencias juridicas</option>
-            <option value="Licenciatura en sistemas informaticos administrativos">Licenciatura en sistemas informaticos administrativos</option>
-            <option value="Ingenieria industrial">Ingenieria industrial</option>
+            <option value="Licenciatura en Administración de Empresas">Licenciatura en Administración de Empresas</option>
+            <option value="Licenciatura en Administración de Empresas (Semipresencial)">Licenciatura en Administración de Empresas (Semipresencial)</option>
+            <option value="Licenciatura en Sistemas Informáticos Administrativos">Licenciatura en Sistemas Informáticos Administrativos</option>
+            <option value="Licenciatura en Contaduría Pública">Licenciatura en Contaduría Pública</option>
+            <option value="Licenciatura en Mercadeo y Negocios Internacionales">Licenciatura en Mercadeo y Negocios Internacionales</option>
+            <option value="Licenciatura en Gestión y Desarrollo Turístico">Licenciatura en Gestión y Desarrollo Turístico</option>
+            <option value="Licenciatura en Gestión de Negocios Digitales">Licenciatura en Gestión de Negocios Digitales</option>
+            <option value="Licenciatura en Relaciones Internacionales y Comercio Exterior">Licenciatura en Relaciones Internacionales y Comercio Exterior</option>
+            <option value="Doctorado en Medicina">Doctorado en Medicina</option>
+            <option value="Licenciatura en Enfermería">Licenciatura en Enfermería</option>
+            <option value="Técnico en Enfermería">Técnico en Enfermería</option>
+            <option value="Licenciatura en Nutrición y Dietética">Licenciatura en Nutrición y Dietética</option>
+            <option value="Ingeniería Química">Ingeniería Química</option>
+            <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
+            <option value="Ingeniería en Desarrollo de Software">Ingeniería en Desarrollo de Software</option>
+            <option value="Ingeniería en Tecnología y Procesamiento de Alimentos (Semipresencial)">Ingeniería en Tecnología y Procesamiento de Alimentos (Semipresencial)</option>
+            <option value="Ingeniería en Telecomunicaciones y Redes">Ingeniería en Telecomunicaciones y Redes</option>
             <option value="Arquitectura">Arquitectura</option>
-            <option value="Ingenieria civil">Ingenieria civil</option>
-            <option value="Ingenieria civil saneamiento ambiental">Ingenieria civil saneamiento ambiental</option>
-            <option value="Ingenieria en sistemas informaticos">Ingenieria en sistemas informaticos</option>
-            <option value="Ingenieria agronomica">Ingenieria agronomica</option>
-            <option value="Ingenieria en telecomunicaciones y redes">Ingenieria en telecomunicaciones y redes</option>
-            <option value="Ingenieria en desarrollo de software">Ingenieria en desarrollo de software</option>
-            <option value="Curso ccna academia de redes cisco unicaes">Curso ccna academia de redes cisco unicaes</option>
-            <option value="Curso ccna academia de redes cisco unicaes">Curso ccna academia de redes cisco unicaes</option>
-            <option value="Licenciatura en administracion de empresas">Licenciatura en administracion de empresas</option>
-            <option value="Licenciatura en mercadeo y negocios internacionales">Licenciatura en mercadeo y negocios internacionales</option>
-            <option value="Licenciatura en gestion y desarrollo turistico">Licenciatura en gestion y desarrollo turistico</option>
-            <option value="Licenciatura en contaduria publica">Licenciatura en contaduria publica</option>
-            <option value="Postgrado en estrategias para la competitividad">Postgrado en estrategias para la competitividad</option>
-            <option value="Maestria en direccion estrategica de empresas">Maestria en direccion estrategica de empresas</option>
-            <option value="Maestria en asesoria educativa">Maestria en asesoria educativa</option>
-            <option value="Maestria en atencion integral de la primera infancia">Maestria en atencion integral de la primera infancia</option>
-            <option value="Maestria en gerencia y gestion ambiental">Maestria en gerencia y gestion ambiental</option>
-            <option value="Maestria en gestion y desarrollo turistico">Maestria en gestion y desarrollo turistico</option>
-            <option value="Curso de formacion pedagica para profesionales">Curso de formacion pedagica para profesionales</option>
-            <option value="Licenciatura en administracion de empresas - semipresencial">Licenciatura en administracion de empresas - semipresencial</option>
+            <option value="Ingeniería Civil">Ingeniería Civil</option>
+            <option value="Ingeniería en Sistemas Informáticos">Ingeniería en Sistemas Informáticos</option>
+            <option value="Ingeniería Agronómica">Ingeniería Agronómica</option>
+            <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+            <option value="Ingeniería Eléctrica">Ingeniería Eléctrica</option>
+            <option value="Ingeniería en procesos textiles">Ingeniería en procesos textiles</option>
+            <option value="Técnico en textiles">Técnico en textiles</option>
+            <option value="Licenciatura en Diseño Gráfico Publicitario">Licenciatura en Diseño Gráfico Publicitario</option>
+            <option value="Licenciatura en Ciencias Jurídicas">Licenciatura en Ciencias Jurídicas</option>
+            <option value="Licenciatura en Periodismo y Comunicación Audiovisual">Licenciatura en Periodismo y Comunicación Audiovisual</option>
+            <option value="Licenciatura en Idioma Inglés">Licenciatura en Idioma Inglés</option>
+            <option value="Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica">Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica</option>
+            <option value="Licenciatura en Ciencias de la Educación con Especialidad en Idioma Inglés">Licenciatura en Ciencias de la Educación con Especialidad en Idioma Inglés</option>
+            <option value="Licenciatura en Ciencias Religiosas">Licenciatura en Ciencias Religiosas</option>
+            <option value="Licenciatura en Idioma Inglés (Semi presencial)">Licenciatura en Idioma Inglés (Semi presencial)</option>
+            <option value="Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)">Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)</option>
+            <option value="Licenciatura en Diseño Gráfico Publicitario">Licenciatura en Diseño Gráfico Publicitario</option>
+            <option value="Licenciatura en Ciencias Jurídicas">Licenciatura en Ciencias Jurídicas</option>
+            <option value="Licenciatura en Periodismo y Comunicación Audiovisual">Licenciatura en Periodismo y Comunicación Audiovisual</option>
+            <option value="Licenciatura en Ciencias Religiosas">Licenciatura en Ciencias Religiosas</option>
+            <option value="Maestría en Asesoría Educativa">Maestría en Asesoría Educativa</option>
+            <option value="Maestría en Seguridad Informática">Maestría en Seguridad Informática</option>
             </select>
         </div>
-        <br>
-        <div class="col-4 p-0">
+
+        <div class="form-group">
             <label for="archivo" class="form-label">Archivo</label>
             <input type="file" name="archivo" class="form-control" placeholder="">
         </div>
-        <br>
 
-        <div class="col-3 p-0">
-            <div class="d-flex">
-                <button type="submit" class="flex-grow-1 me-1 mr-2 form-control btn btn-primary">Guardar</button>
-                <a href="{{ url('trabajos') }}" class="flex-grow-1 ms-1 ml-2 btn btn-secondary">Regresar</a>
-            </div>
+        <div class="d-flex justify-content-center"> <!-- Agregamos "justify-content-center" para centrar el contenido -->
+            <button type="submit" id="guardarBtn" class="me-1 form-btn text-center">Guardar</button>
+            <a href="{{ url('trabajos') }}" class="ms-1 form-btn form-btn-secondary text-center">Regresar</a>
         </div>
     </form>
 </div>
