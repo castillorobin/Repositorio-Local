@@ -1,17 +1,5 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('auth.login');
@@ -19,14 +7,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('trabajos', 'App\Http\Controllers\TrabajosController');
-Route::get('/trabajos/descargar/{id}', 'App\Http\Controllers\TrabajosController@descargarArchivo')->name('trabajos.descargar');
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect('/login');
-})->name('logout');
-Route::get('trabajos/descargar/{id}', 'TrabajosController@descargarArchivo')->name('trabajos.descargar');
+// Rutas protegidas con middleware de autenticación
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('trabajos', 'App\Http\Controllers\TrabajosController');
+    Route::get('/trabajos/descargar/{id}', 'App\Http\Controllers\TrabajosController@descargarArchivo')->name('trabajos.descargar');
+    Route::post('/logout', function () {
+        Auth::logout();
+        return redirect('/login');
+    })->name('logout');
+});
+
+// Si deseas proteger la ruta de descarga, también agrega el middleware de autenticación a esa ruta específica
+Route::get('trabajos/descargar/{id}', 'TrabajosController@descargarArchivo')->middleware('auth')->name('trabajos.descargar');
 
 
 

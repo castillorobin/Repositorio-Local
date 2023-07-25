@@ -78,9 +78,6 @@
         transition: 0.3s;
     }
 </style>
-
-<!-- ... Resto del código HTML ... -->
-
 </head>
 <body>
 <div id="app">
