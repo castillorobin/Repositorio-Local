@@ -16,49 +16,51 @@
 
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Año</th>
-                        <th>Facultad</th>
-                        <th>Carrera</th>
-                        <th>Archivo</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($trabajo as $traba)
-                    <tr>
-                        <td>{{$traba->tipo}}</td>
-                        <td>{{$traba->titulo}}</td>
-                        <td>{{$traba->autor}}</td>
-                        <td>{{$traba->año}}</td>
-                        <td>{{$traba->facultad}}</td>
-                        <td>{{$traba->carrera}}</td>
-                        <td>
-                            @if ($traba->archivo)
-                                <a href="{{ route('trabajos.descargar', ['id' => $traba->id, 'timestamp' => time()]) }}" class="btn btn-success navbar-button">Descargar</a>
-                            @else
-                                No disponible
-                            @endif
-                        </td>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">Tipo</th>
+                            <th class="text-center">Título</th>
+                            <th class="text-center">Autor</th>
+                            <th class="text-center">Año</th>
+                            <th class="text-center">Facultad</th>
+                            <th class="text-center">Carrera</th>
+                            <th class="text-center">Archivo</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($trabajo as $traba)
+                        <tr>
+                            <td>{{$traba->tipo}}</td>
+                            <td>{{$traba->titulo}}</td>
+                            <td>{{$traba->autor}}</td>
+                            <td>{{$traba->año}}</td>
+                            <td>{{$traba->facultad}}</td>
+                            <td>{{$traba->carrera}}</td>
+                            <td>
+                                @if ($traba->archivo)
+                                    <a href="{{ route('trabajos.descargar', ['id' => $traba->id, 'timestamp' => time()]) }}" class="btn btn-success navbar-button">Descargar</a>
+                                @else
+                                    No disponible
+                                @endif
+                            </td>
 
-                        <td>
-                            <a href="{{ route('trabajos.edit', ['trabajo' => $traba->id]) }}" class="btn btn-primary navbar-button">Editar</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                            <td>
+                                <a href="{{ route('trabajos.edit', ['trabajo' => $traba->id]) }}" class="btn btn-primary navbar-button">Editar</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 
 <style>
-    /* Estilo para los botones de descarga y editar */
+    
     .navbar-button {
         color: #9D2720;
         background-color: #F6C03D;
@@ -74,6 +76,14 @@
         background-color: #9D2720;
         color: #F6C03D;
         transition: 0.3s;
+    }
+    .table th.text-center {
+        text-align: center;
+    }
+
+    
+    .table td.text-center {
+        text-align: center;
     }
 </style>
 
