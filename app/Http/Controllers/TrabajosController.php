@@ -14,12 +14,26 @@ class TrabajosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $trabajo = Trabajos::all();
-        return view('trabajos.index', compact('trabajo') );
+        $searchTerm = $request->input('search');
+        
+        // Verificar si se ha ingresado un término de búsqueda
+        if ($searchTerm) {
+            // Realizar la búsqueda en la base de datos
+            $trabajo = Trabajos::where('titulo', 'like', '%' . $searchTerm . '%')
+                              ->orWhere('autor', 'like', '%' . $searchTerm . '%')
+                              ->orWhere('facultad', 'like', '%' . $searchTerm . '%')
+                              ->orWhere('carrera', 'like', '%' . $searchTerm . '%')
+                              ->get();
+        } else {
+            // Si no se ha ingresado un término de búsqueda, obtener todos los trabajos
+            $trabajo = Trabajos::all();
+        }
+    
+        return view('trabajos.index', compact('trabajo'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

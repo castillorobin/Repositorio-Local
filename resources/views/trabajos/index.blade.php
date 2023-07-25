@@ -7,10 +7,11 @@
     <br>
     <div class="row justify-content-end">
         <div class="col-md-4">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Buscar</button>
-            </form>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" id="txtSearch" name="search">
+            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+        </form>
+
         </div>
     </div>
 

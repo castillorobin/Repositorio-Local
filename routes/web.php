@@ -26,6 +26,8 @@ Route::post('/logout', function () {
     Auth::logout();
     return redirect('/login');
 })->name('logout');
+Route::get('trabajos/descargar/{id}', 'TrabajosController@descargarArchivo')->name('trabajos.descargar');
+
 
 
 
