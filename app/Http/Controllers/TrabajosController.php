@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Trabajos;
@@ -14,26 +13,11 @@ class TrabajosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        $searchTerm = $request->input('search');
-        
-        // Verificar si se ha ingresado un término de búsqueda
-        if ($searchTerm) {
-            // Realizar la búsqueda en la base de datos
-            $trabajo = Trabajos::where('titulo', 'like', '%' . $searchTerm . '%')
-                              ->orWhere('autor', 'like', '%' . $searchTerm . '%')
-                              ->orWhere('facultad', 'like', '%' . $searchTerm . '%')
-                              ->orWhere('carrera', 'like', '%' . $searchTerm . '%')
-                              ->get();
-        } else {
-            // Si no se ha ingresado un término de búsqueda, obtener todos los trabajos
-            $trabajo = Trabajos::all();
-        }
-    
-        return view('trabajos.index', compact('trabajo'));
-    }
-    
+    public function index()
+{
+    return view('trabajos.index');
+}
+
     /**
      * Show the form for creating a new resource.
      *
@@ -172,7 +156,6 @@ class TrabajosController extends Controller
         return redirect()->route('trabajos.index');
     }
     
-    
 
     /**
      * Remove the specified resource from storage.
@@ -203,6 +186,58 @@ class TrabajosController extends Controller
         }
     }
     
+        
+    public function search(Request $request, $tipo) {
+    $searchTerm = $request->input('search');
+    
+    // Realizar la búsqueda en la base de datos según el término de búsqueda y el tipo de trabajo
+    if ($searchTerm) {
+        $trabajo = Trabajos::where(function ($query) use ($searchTerm) {
+            $query->where('titulo', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('autor', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('facultad', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('carrera', 'like', '%' . $searchTerm . '%');
+        })
+        ->where('tipo', $tipo) // Agregar esta condición para filtrar por tipo de trabajo
+        ->get();
+    } else {
+        // Si no se ha ingresado un término de búsqueda, obtener todos los trabajos del tipo especificado
+        $trabajo = Trabajos::where('tipo', $tipo)->get();
+    }
 
+    // Retornar una colección de resultados
+    return $trabajo;
+}
+
+    public function pasantiasIndex(Request $request)
+    {
+        // Llamar a la función de búsqueda con el tipo 'pasantia'
+        $tipo = 'pasantia';
+        $trabajo = $this->search($request, $tipo);
+    
+        // Renderizar la vista de pasantias con los resultados y el tipo
+        return view('trabajos.pasantias', compact('trabajo', 'tipo'));
+    }
+    
+    public function investigacionIndex(Request $request)
+    {
+        // Llamar a la función de búsqueda con el tipo 'investigacion'
+        $tipo = 'investigacion';
+        $trabajo = $this->search($request, $tipo);
+    
+        // Renderizar la vista de investigacion con los resultados y el tipo
+        return view('trabajos.investigacion', compact('trabajo', 'tipo'));
+    }
+    
+    public function tesisIndex(Request $request)
+    {
+        // Llamar a la función de búsqueda con el tipo 'tesis'
+        $tipo = 'tesis';
+        $trabajo = $this->search($request, $tipo);
+    
+        // Renderizar la vista de tesis con los resultados y el tipo
+        return view('trabajos.tesis', compact('trabajo', 'tipo'));
+    }
+    
 
 }

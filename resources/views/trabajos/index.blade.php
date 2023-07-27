@@ -5,87 +5,102 @@
 <div class="container">
     <h1 class="text-center">Repositorio Local de Trabajos de Graduación</h1>
     <br>
-    <div class="row justify-content-end">
-        <div class="col-md-4">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" id="txtSearch" name="search">
-            <button class="btn btn-outline-primary" type="submit">Buscar</button>
-        </form>
+    
+    <style>
+        .row {
+            display: flex;
+            justify-content: space-around;
+        }
 
-        </div>
-    </div>
+        .col-md-4 {
+            flex: 0 0 30%;
+            max-width: 30%;
+            margin-bottom: 20px;
+        }
 
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-body {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Estilos para los botones de las tarjetas */
+        .card .btn {
+            background-color:  #F6C03D;
+            color: #9D2720;
+            border: none;
+            padding: 8px 16px;
+            margin-top: 10px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .card .btn:hover {
+            background-color: #9D2720;
+            color: #F6C03D;
+        }
+    </style>
     <div class="row">
-        <div class="col-md-12">
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th class="text-center">Tipo</th>
-                            <th class="text-center">Título</th>
-                            <th class="text-center">Autor</th>
-                            <th class="text-center">Año</th>
-                            <th class="text-center">Facultad</th>
-                            <th class="text-center">Carrera</th>
-                            <th class="text-center">Archivo</th>
-                            <th class="text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($trabajo as $traba)
-                        <tr>
-                            <td>{{$traba->tipo}}</td>
-                            <td>{{$traba->titulo}}</td>
-                            <td>{{$traba->autor}}</td>
-                            <td>{{$traba->año}}</td>
-                            <td>{{$traba->facultad}}</td>
-                            <td>{{$traba->carrera}}</td>
-                            <td>
-                                @if ($traba->archivo)
-                                    <a href="{{ route('trabajos.descargar', ['id' => $traba->id, 'timestamp' => time()]) }}" class="btn btn-success navbar-button">Descargar</a>
-                                @else
-                                    No disponible
-                                @endif
-                            </td>
-
-                            <td>
-                                <a href="{{ route('trabajos.edit', ['trabajo' => $traba->id]) }}" class="btn btn-primary navbar-button">Editar</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="imagenes/pas.jpg" alt="" class="logo">
+                <div class="card-body">
+                    <h5 class="card-title">Listado De Pasantia</h5>
+                    <p class="card-text">Listado exclusivo de todas las pasantias del repositorio local</p>
+                    <div class="text-center"> <!-- Agregar la clase text-center para alinear el botón -->
+                        <a href="{{ route('trabajos.pasantiasIndex') }}" class="btn">Ir a listado de pasantia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="imagenes/in.jpg" alt="" class="logo">
+                <div class="card-body">
+                    <h5 class="card-title">Listado De Investigacion</h5>
+                    <p class="card-text">Listado exclusivo de todas las invesigaciones del repositorio local</p>
+                    <div class="text-center"> <!-- Agregar la clase text-center para alinear el botón -->
+                        <a href="{{ route('trabajos.investigacionIndex') }}" class="btn">Ir a listado de investigaciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="imagenes/inve.jpg" alt="" class="logo">
+                <div class="card-body">
+                    <h5 class="card-title">Listado De Tesis</h5>
+                    <p class="card-text">Listado exclusivo de todas las tesis del repositorio local</p>
+                    <div class="text-center"> <!-- Agregar la clase text-center para alinear el botón -->
+                        <a href="{{ route('trabajos.tesisIndex') }}" class="btn">Ir a listado de tesis</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-    
-    .navbar-button {
-        color: #9D2720;
-        background-color: #F6C03D;
-        border: none;
-        padding: 8px 16px;
-        margin: 5px;
-        border-radius: 20px;
-        text-decoration: none;
-        font-size: 16px;
-    }
-
-    .navbar-button:hover {
-        background-color: #9D2720;
-        color: #F6C03D;
-        transition: 0.3s;
-    }
-    .table th.text-center {
-        text-align: center;
-    }
-
-    
-    .table td.text-center {
-        text-align: center;
-    }
-</style>
 
 @endsection
