@@ -5,7 +5,7 @@
 <div class="container">
     <h1 class="text-center">Repositorio Local de Trabajos de Graduación</h1>
     <br>
-    
+
     <style>
         .row {
             display: flex;
@@ -46,7 +46,7 @@
 
         /* Estilos para los botones de las tarjetas */
         .card .btn {
-            background-color:  #F6C03D;
+            background-color: #F6C03D;
             color: #9D2720;
             border: none;
             padding: 8px 16px;
@@ -62,16 +62,30 @@
             background-color: #9D2720;
             color: #F6C03D;
         }
+
+        /* Centrar los elementos dentro de col-md-4 */
+        .centered-content {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .centered-elements {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     </style>
+
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <img src="imagenes/pas.jpg" alt="" class="logo">
+                <img src="imagenes/pasante.jpg" alt="" class="logo">
                 <div class="card-body">
-                    <h5 class="card-title">Listado De Pasantia</h5>
-                    <p class="card-text">Listado exclusivo de todas las pasantias del repositorio local</p>
-                    <div class="text-center"> <!-- Agregar la clase text-center para alinear el botón -->
-                        <a href="{{ route('trabajos.pasantiasIndex') }}" class="btn">Ir a listado de pasantia</a>
+                    <div class="centered-elements">
+                        <h5 class="card-title">Listado De Pasantia</h5>
+                        <div class="text-center">
+                            <a href="{{ route('trabajos.pasantiasIndex') }}" class="btn">Ir a listado de pasantia</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,22 +94,24 @@
             <div class="card">
                 <img src="imagenes/in.jpg" alt="" class="logo">
                 <div class="card-body">
-                    <h5 class="card-title">Listado De Investigacion</h5>
-                    <p class="card-text">Listado exclusivo de todas las invesigaciones del repositorio local</p>
-                    <div class="text-center"> <!-- Agregar la clase text-center para alinear el botón -->
-                        <a href="{{ route('trabajos.investigacionIndex') }}" class="btn">Ir a listado de investigaciones</a>
+                    <div class="centered-elements">
+                        <h5 class="card-title">Listado De Investigacion</h5>
+                        <div class="text-center">
+                            <a href="{{ route('trabajos.investigacionIndex') }}" class="btn">Ir a listado de investigaciones</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 centered-content">
             <div class="card">
                 <img src="imagenes/inve.jpg" alt="" class="logo">
                 <div class="card-body">
-                    <h5 class="card-title">Listado De Tesis</h5>
-                    <p class="card-text">Listado exclusivo de todas las tesis del repositorio local</p>
-                    <div class="text-center"> <!-- Agregar la clase text-center para alinear el botón -->
-                        <a href="{{ route('trabajos.tesisIndex') }}" class="btn">Ir a listado de tesis</a>
+                    <div class="centered-elements">
+                        <h5 class="card-title">Listado De Tesis</h5>
+                        <div class="text-center">
+                            <a href="{{ route('trabajos.tesisIndex') }}" class="btn">Ir a listado de tesis</a>
+                        </div>
                     </div>
                 </div>
             </div>
