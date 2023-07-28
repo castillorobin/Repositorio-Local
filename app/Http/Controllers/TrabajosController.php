@@ -1,9 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Trabajos;
 use Illuminate\Http\Request;
+use App\Models\Trabajos;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use App\Exports\InformeExport;
+
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 class TrabajosController extends Controller
@@ -238,6 +243,93 @@ class TrabajosController extends Controller
         // Renderizar la vista de tesis con los resultados y el tipo
         return view('trabajos.tesis', compact('trabajo', 'tipo'));
     }
-    
 
+    public function mostrarInformes(Request $request)
+    {
+        // Definir un valor predeterminado para $tipo y $anio
+        $tipo = $request->input('tipo', '');
+        $anio = $request->input('anio', '');
+
+        if ($request->isMethod('post')) {
+            // Procesar los filtros y obtener los resultados
+            $facultad = $request->input('facultad');
+            $carrera = $request->input('carrera');
+
+            // Aquí debemos utilizar Eloquent para construir la consulta
+            // y aplicar los filtros según los valores seleccionados
+
+            $query = Trabajos::query();
+
+            if ($tipo) {
+                $query->where('tipo', $tipo);
+            }
+
+            if ($anio) {
+                $query->where('año', $anio);
+            }
+
+            if ($facultad) {
+                $query->where('facultad', $facultad);
+            }
+
+            if ($carrera) {
+                $query->where('carrera', $carrera);
+            }
+
+            // Obtener los resultados filtrados
+            $informe = $query->get();
+
+            // Obtener los años, facultades y carreras disponibles de los resultados filtrados sin duplicados
+            $anios = $informe->pluck('año')->unique();
+            $facultades = $informe->pluck('facultad')->unique();
+            $carreras = $informe->pluck('carrera')->unique();
+
+            // Retornar la vista de informes con los resultados y los años, facultades y carreras disponibles
+            return view('trabajos.informes', [
+                'informe' => $informe,
+                'anios' => $anios,
+                'facultades' => $facultades,
+                'carreras' => $carreras,
+                'tipo' => $tipo,
+                'anio' => $anio,
+                'selectedFacultad' => $facultad,
+                'selectedCarrera' => $carrera
+            ]);
+        }
+
+        // Si la solicitud no es POST, simplemente mostrar el formulario
+        $anios = Trabajos::distinct()->pluck('año');
+        $facultades = Trabajos::distinct()->pluck('facultad');
+        $carreras = Trabajos::distinct()->pluck('carrera');
+        return view('trabajos.informes', [
+            'anios' => $anios,
+            'facultades' => $facultades,
+            'carreras' => $carreras,
+            'tipo' => $tipo,
+            'anio' => $anio,
+            'selectedFacultad' => null, // Si no hay filtro por facultad, puedes establecerla como null o un valor predeterminado
+            'selectedCarrera' => null
+        ]);
+    }
+
+   public function descargarExcel(Request $request)
+{
+    // Obtener los filtros seleccionados del formulario
+    $tipo = $request->input('tipo', '');
+    $anio = $request->input('anio', '');
+    $facultad = $request->input('facultad', '');
+    $carrera = $request->input('carrera', '');
+
+    // Aquí debes aplicar la misma lógica de filtrado que utilizaste para mostrar los resultados
+    $informe = $this->mostrarInformes($request);
+
+    // Luego, puedes exportar los datos a Excel usando la clase InformeExport
+    return Excel::download(new InformeExport($tipo, $anio, $facultad, $carrera), 'informe.xlsx');
+}
+    
+    
+    
+    
+    
+    
 }
