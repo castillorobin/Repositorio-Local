@@ -244,6 +244,16 @@ class TrabajosController extends Controller
         return view('trabajos.tesis', compact('trabajo', 'tipo'));
     }
 
+    public function proyectoIndex(Request $request)
+    {
+        // Llamar a la función de búsqueda con el tipo 'tesis'
+        $tipo = 'proyecto';
+        $trabajo = $this->search($request, $tipo);
+    
+        // Renderizar la vista de tesis con los resultados y el tipo
+        return view('trabajos.proyecto', compact('trabajo', 'tipo'));
+    }
+
     public function mostrarInformes(Request $request)
     {
         // Definir un valor predeterminado para $tipo y $anio

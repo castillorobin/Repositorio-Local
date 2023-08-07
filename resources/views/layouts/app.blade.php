@@ -102,10 +102,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('trabajos.create') }}">Agregar</a>
                     </li>
-                    <form action="{{ route('informes') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="nav-link" style="border: none; background: none; cursor: pointer;">Informes</button>
-                    </form>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-button" href="{{ route('informes') }}">Informes</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -16,6 +16,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pasantias', [TrabajosController::class, 'pasantiasIndex'])->name('trabajos.pasantiasIndex');
     Route::get('/investigacion', [TrabajosController::class, 'investigacionIndex'])->name('trabajos.investigacionIndex');
     Route::get('/tesis', [TrabajosController::class, 'tesisIndex'])->name('trabajos.tesisIndex');
+    Route::get('/proyecto', [TrabajosController::class, 'proyectoIndex'])->name('trabajos.proyectoIndex');
+
 
     // Rutas para mostrar la vista de informes y procesar los filtros
     Route::match(['get', 'post'], '/informes', [TrabajosController::class, 'mostrarInformes'])->name('informes');

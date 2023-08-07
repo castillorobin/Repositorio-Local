@@ -12,9 +12,9 @@
             justify-content: space-around;
         }
 
-        .col-md-4 {
-            flex: 0 0 30%;
-            max-width: 30%;
+        .col-md-3 {
+            flex: 0 0 25%;
+            max-width: 25%;
             margin-bottom: 20px;
         }
 
@@ -63,7 +63,7 @@
             color: #F6C03D;
         }
 
-        /* Centrar los elementos dentro de col-md-4 */
+        /* Centrar los elementos dentro de col-md-3 */
         .centered-content {
             display: flex;
             justify-content: space-around;
@@ -77,7 +77,7 @@
     </style>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 <img src="imagenes/pasante.jpg" alt="" class="logo">
                 <div class="card-body">
@@ -90,7 +90,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <div class="card">
+                <img src="imagenes/poyecto.png" alt="" class="logo">
+                <div class="card-body">
+                    <div class="centered-elements">
+                        <h5 class="card-title">Listado De Proyectos</h5>
+                        <div class="text-center">
+                            <a href="{{ route('trabajos.proyectoIndex') }}" class="btn">Ir a listado de proyectos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
             <div class="card">
                 <img src="imagenes/in.jpg" alt="" class="logo">
                 <div class="card-body">
@@ -103,7 +116,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 centered-content">
+        <div class="col-md-3">
             <div class="card">
                 <img src="imagenes/inve.jpg" alt="" class="logo">
                 <div class="card-body">

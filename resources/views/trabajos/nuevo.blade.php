@@ -114,6 +114,7 @@
                 <option selected>Pasantia</option>
                 <option value="Investigacion">Investigacion</option>
                 <option value="Tesis">Tesis</option>
+                <option value="proyecto">Proyecto</option>
             </select>
         </div>
 
