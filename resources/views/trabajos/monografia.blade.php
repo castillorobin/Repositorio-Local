@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-center">Repositorio Local de Trabajos de Graduación de Investigación</h1>
+    <h1 class="text-center">Repositorio Local de Trabajos de Graduación de Monografias</h1>
     <br>
     <div class="row justify-content-end">
         <div class="col-md-4">
@@ -11,6 +11,7 @@
             <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" id="txtSearch" name="search">
             <button class="btn btn-outline-primary" type="submit">Buscar</button>
         </form>
+
         </div>
     </div>
     <br>
@@ -21,6 +22,8 @@
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
+                          
+                            <th class="text-center">Tipo</th>
                             <th class="text-center">Título</th>
                             <th class="text-center">Autor</th>
                             <th class="text-center">Año</th>
@@ -33,6 +36,7 @@
                     <tbody>
                         @foreach ($trabajo as $traba)
                         <tr>
+                            <td>{{$traba->tipo}}</td>
                             <td>{{$traba->titulo}}</td>
                             <td>{{$traba->autor}}</td>
                             <td>{{$traba->año}}</td>
@@ -70,4 +74,6 @@
     <button class="btn btn-secondary" onclick="window.scrollTo(0, 0)">Inicio de pagina</button>
 </div>
 @endsection
+
+
 

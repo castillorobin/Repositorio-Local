@@ -57,9 +57,16 @@
         </div>
     </div>
 </div>
-
 <style>
-    /* Estilos personalizados aquí */
+    .bottom-left-buttons {
+        position: fixed;
+        bottom: 10px;
+        right: 5px;
+    }
 </style>
 
+<div class="bottom-left-buttons">
+    <a href="{{ route('trabajos.index') }}" class="btn btn-secondary">Lsitado</a>
+    <button class="btn btn-secondary" onclick="window.scrollTo(0, 0)">Inicio de pagina</button>
+</div>
 @endsection

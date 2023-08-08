@@ -122,6 +122,7 @@
                 <option value="Investigacion" {{ $trabajo->tipo === 'Investigacion' ? 'selected' : '' }}>Investigacion</option>
                 <option value="Tesis" {{ $trabajo->tipo === 'Tesis' ? 'selected' : '' }}>Tesis</option>
                 <option value="Proyecto" {{ $trabajo->tipo === 'Proyecto' ? 'selected' : '' }}>Proyecto</option>
+                <option value="monografia" {{ $trabajo->tipo === 'Monografia' ? 'selected' : '' }}>Monografia</option>
                 
             </select>
         </div>

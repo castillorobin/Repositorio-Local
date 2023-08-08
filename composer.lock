@@ -662,7 +662,7 @@
                     "dev-master": "2.1-dev"
                 },
                 "laravel": {
-                    "providers": [
+                    "s": [
                         "Fruitcake\\Cors\\CorsServiceProvider"
                     ]
                 }

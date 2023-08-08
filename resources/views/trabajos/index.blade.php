@@ -7,37 +7,50 @@
     <br>
 
     <style>
-        .row {
-            display: flex;
-            justify-content: space-around;
-        }
+    .row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
 
-        .col-md-3 {
-            flex: 0 0 25%;
-            max-width: 25%;
-            margin-bottom: 20px;
-        }
+    .col-md-3 {
+        flex: 0 0 20%;
+        max-width: 20%;
+        margin-bottom: 20px;
+    }
 
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column; /* Alinear elementos verticalmente */
+        justify-content: space-between; /* Espacio entre elementos */
+    }
 
-        .logo {
-            width: 100%;
-            height: auto;
-        }
+    .logo {
+        width: 100%;
+        height: auto;
+        min-height: 150px;
+    }
 
-        .card-body {
-            padding: 16px;
-        }
+    .card-body {
+        padding: 16px;
+        flex-grow: 1; /* Permitir que el cuerpo de la tarjeta crezca */
+    }
 
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 8px;
+        text-align: center; /* Centrar el título */
+    }
+
+    .text-center {
+        text-align: center; /* Centrar el botón */
+    }
 
         .card-text {
             font-size: 1rem;
@@ -105,6 +118,19 @@
         </div>
         <div class="col-md-3">
             <div class="card">
+                <img src="imagenes/mono.png" alt="" class="logo">
+                <div class="card-body">
+                    <div class="centered-elements">
+                        <h5 class="card-title">Listado De Monografias</h5>
+                        <div class="text-center">
+                            <a href="{{ route('trabajos.monografiaIndex') }}" class="btn">Ir a listado de Monografias</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
                 <img src="imagenes/in.jpg" alt="" class="logo">
                 <div class="card-body">
                     <div class="centered-elements">
@@ -121,7 +147,7 @@
                 <img src="imagenes/inve.jpg" alt="" class="logo">
                 <div class="card-body">
                     <div class="centered-elements">
-                        <h5 class="card-title">Listado De Tesis</h5>
+                        <h5 class="card-title">Listado De todas Tesis</h5>
                         <div class="text-center">
                             <a href="{{ route('trabajos.tesisIndex') }}" class="btn">Ir a listado de tesis</a>
                         </div>
