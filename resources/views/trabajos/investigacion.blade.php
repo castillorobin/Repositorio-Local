@@ -22,6 +22,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th class="text-center">Título</th>
+                            <th class="text-center">Título</th>
                             <th class="text-center">Autor</th>
                             <th class="text-center">Año</th>
                             <th class="text-center">Facultad</th>
@@ -33,6 +34,7 @@
                     <tbody>
                         @foreach ($trabajo as $traba)
                         <tr>
+                            <td>{{$traba->tipo}}</td>
                             <td>{{$traba->titulo}}</td>
                             <td>{{$traba->autor}}</td>
                             <td>{{$traba->año}}</td>
