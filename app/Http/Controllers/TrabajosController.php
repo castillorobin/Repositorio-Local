@@ -6,7 +6,7 @@ use App\Models\Trabajos;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Exports\InformeExport;
-
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -40,16 +40,20 @@ class TrabajosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $trabajo = $request->except('_token');
-    if ($request->hasFile('archivo')) {
-        $trabajo['archivo'] = $request->file('archivo')->getClientOriginalName();
-        $request->file('archivo')->storeAs('archivosPDF', $trabajo['archivo']);
+    {
+        $trabajo = $request->except('_token');
+    
+        // Agregar asignación del usuario autenticado
+        $trabajo['usuario'] = Auth::user()->name;
+    
+        if ($request->hasFile('archivo')) {
+            $trabajo['archivo'] = $request->file('archivo')->getClientOriginalName();
+            $request->file('archivo')->storeAs('archivosPDF', $trabajo['archivo']);
+        }
+    
+        Trabajos::insert($trabajo);
+        return redirect()->route('trabajos.index');
     }
-    Trabajos::insert($trabajo);
-    return redirect()->route('trabajos.index');
-}
-
 
     /**
      * Display the specified resource.
@@ -264,75 +268,78 @@ class TrabajosController extends Controller
     }
 
     public function mostrarInformes(Request $request)
-    {
-        // Definir un valor predeterminado para $tipo y $anio
-        $tipo = $request->input('tipo', '');
-        $anio = $request->input('anio', '');
+{
+    // Definir un valor predeterminado para $tipo y $anio
+    $tipo = $request->input('tipo', '');
+    $anio = $request->input('anio', '');
+    $facultad = $request->input('facultad', ''); // Agrega esto para las facultades
+    $carrera = $request->input('carrera', ''); // Agrega esto para las carreras
 
-        if ($request->isMethod('post')) {
-            // Procesar los filtros y obtener los resultados
-            $facultad = $request->input('facultad');
-            $carrera = $request->input('carrera');
+    // Obtener todos los años disponibles sin aplicar filtros
+    $allAnios = Trabajos::distinct()->pluck('año');
 
-            // Aquí debemos utilizar Eloquent para construir la consulta
-            // y aplicar los filtros según los valores seleccionados
+    if ($request->isMethod('post')) {
+        // Procesar los filtros y obtener los resultados
 
-            $query = Trabajos::query();
+        // Aquí debemos utilizar Eloquent para construir la consulta
+        // y aplicar los filtros según los valores seleccionados
 
-            if ($tipo) {
-                $query->where('tipo', $tipo);
-            }
+        $query = Trabajos::query();
 
-            if ($anio) {
-                $query->where('año', $anio);
-            }
-
-            if ($facultad) {
-                $query->where('facultad', $facultad);
-            }
-
-            if ($carrera) {
-                $query->where('carrera', $carrera);
-            }
-
-            // Obtener los resultados filtrados
-            $informe = $query->get();
-
-            // Obtener los años, facultades y carreras disponibles de los resultados filtrados sin duplicados
-            $anios = $informe->pluck('año')->unique()->sort(function ($a, $b) {
-                return $a - $b; // Esto ordenará los años de forma ascendente
-            });
-            
-            $facultades = $informe->pluck('facultad')->unique();
-            $carreras = $informe->pluck('carrera')->unique();
-
-            // Retornar la vista de informes con los resultados y los años, facultades y carreras disponibles
-            return view('trabajos.informes', [
-                'informe' => $informe,
-                'anios' => $anios,
-                'facultades' => $facultades,
-                'carreras' => $carreras,
-                'tipo' => $tipo,
-                'anio' => $anio,
-                'selectedFacultad' => $facultad,
-                'selectedCarrera' => $carrera
-            ]);
+        if ($tipo) {
+            $query->where('tipo', $tipo);
         }
 
-        // Si la solicitud no es POST, simplemente mostrar el formulario
-        $anios = Trabajos::distinct()->pluck('año');
-        $facultades = Trabajos::distinct()->pluck('facultad');
-        $carreras = Trabajos::distinct()->pluck('carrera');
+        if ($anio) {
+            $query->where('año', $anio);
+        }
+
+        if ($facultad) {
+            $query->where('facultad', $facultad);
+        }
+
+        if ($carrera) {
+            $query->where('carrera', $carrera);
+        }
+
+        // Obtener los resultados filtrados
+        $informe = $query->get();
+
+        // Obtener los años, facultades y carreras disponibles de los resultados filtrados sin duplicados
+        $anios = $informe->pluck('año')->unique()->sort(function ($a, $b) {
+            return $a - $b;
+        });
+
+        $facultades = $informe->pluck('facultad')->unique();
+        $carreras = $informe->pluck('carrera')->unique();
+
+        // Retornar la vista de informes con los resultados y los años, facultades y carreras disponibles
         return view('trabajos.informes', [
+            'informe' => $informe,
             'anios' => $anios,
             'facultades' => $facultades,
             'carreras' => $carreras,
             'tipo' => $tipo,
             'anio' => $anio,
-            'selectedFacultad' => null, // Si no hay filtro por facultad, puedes establecerla como null o un valor predeterminado
-            'selectedCarrera' => null
+            'selectedFacultad' => $facultad,
+            'selectedCarrera' => $carrera
         ]);
     }
+
+    // Si la solicitud no es POST, simplemente mostrar el formulario
+    $facultades = Trabajos::distinct()->pluck('facultad');
+    $carreras = Trabajos::distinct()->pluck('carrera');
+    return view('trabajos.informes', [
+        'anios' => $allAnios,
+        'facultades' => $facultades,
+        'carreras' => $carreras,
+        'tipo' => $tipo,
+        'anio' => $anio,
+        'selectedFacultad' => null,
+        'selectedCarrera' => null
+    ]);
+}
+
 
    public function descargarExcel(Request $request)
 {

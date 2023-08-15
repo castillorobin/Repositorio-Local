@@ -198,7 +198,12 @@
             <input type="file" name="archivo" class="form-control" placeholder="">
         </div>
 
-        <div class="d-flex justify-content-center"> <!-- Agregamos "justify-content-center" para centrar el contenido -->
+        <!-- Agregar campo para capturar el nombre del usuario autenticado -->
+        <div class="form-group">     
+            <input type="hidden" name="usuario" value="{{ Auth::user()->name }}">
+        </div>
+
+        <div class="d-flex justify-content-center">
             <button type="submit" id="guardarBtn" class="me-1 form-btn text-center">Guardar</button>
             <a href="{{ url('trabajos') }}" class="ms-1 form-btn form-btn-secondary text-center">Regresar</a>
         </div>
