@@ -66,10 +66,29 @@
         bottom: 10px;
         right: 5px;
     }
+
+    .custom-button {
+        background-color: #9D2720;
+        color: #F6C03D;
+        border: none;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .custom-button:hover {
+        background-color: #F6C03D;
+        color: #9D2720;
+        transition: 0.3s;
+    }
 </style>
 
 <div class="bottom-left-buttons">
-    <a href="{{ route('trabajos.index') }}" class="btn btn-secondary">Lsitado</a>
-    <button class="btn btn-secondary" onclick="window.scrollTo(0, 0)">Inicio de pagina</button>
+    <a href="{{ route('trabajos.index') }}" class="custom-button">Listado</a>
+    <button class="custom-button" onclick="window.scrollTo(0, 0)">InicioPag</button>
 </div>
+
 @endsection

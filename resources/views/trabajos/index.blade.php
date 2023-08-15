@@ -97,7 +97,7 @@
                     <div class="centered-elements">
                         <h5 class="card-title">Listado De Pasantia</h5>
                         <div class="text-center">
-                            <a href="{{ route('trabajos.pasantiasIndex') }}" class="btn">Ir a listado de pasantia</a>
+                            <a href="{{ route('trabajos.pasantiasIndex') }}" class="btn">Ir a listado pasantia</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                     <div class="centered-elements">
                         <h5 class="card-title">Listado De Proyectos</h5>
                         <div class="text-center">
-                            <a href="{{ route('trabajos.proyectoIndex') }}" class="btn">Ir a listado de proyectos</a>
+                            <a href="{{ route('trabajos.proyectoIndex') }}" class="btn">Ir a listado proyectos</a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                     <div class="centered-elements">
                         <h5 class="card-title">Listado De Monografias</h5>
                         <div class="text-center">
-                            <a href="{{ route('trabajos.monografiaIndex') }}" class="btn">Ir a listado de Monografias</a>
+                            <a href="{{ route('trabajos.monografiaIndex') }}" class="btn">Ir a listado Monografias</a>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                     <div class="centered-elements">
                         <h5 class="card-title">Listado De Investigacion</h5>
                         <div class="text-center">
-                            <a href="{{ route('trabajos.investigacionIndex') }}" class="btn">Ir a listado de investigaciones</a>
+                            <a href="{{ route('trabajos.investigacionIndex') }}" class="btn">Ir a listado investigaciones</a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,9 @@
                     <div class="centered-elements">
                         <h5 class="card-title">Listado De todas Tesis</h5>
                         <div class="text-center">
-                            <a href="{{ route('trabajos.tesisIndex') }}" class="btn">Ir a listado de tesis</a>
+                            <a href="{{ route('trabajos.tesisIndex') }}" class="btn">Ir a listado 
+                                <br>
+                                tesis</a>
                         </div>
                     </div>
                 </div>

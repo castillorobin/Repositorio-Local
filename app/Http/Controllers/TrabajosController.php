@@ -299,7 +299,10 @@ class TrabajosController extends Controller
             $informe = $query->get();
 
             // Obtener los años, facultades y carreras disponibles de los resultados filtrados sin duplicados
-            $anios = $informe->pluck('año')->unique();
+            $anios = $informe->pluck('año')->unique()->sort(function ($a, $b) {
+                return $a - $b; // Esto ordenará los años de forma ascendente
+            });
+            
             $facultades = $informe->pluck('facultad')->unique();
             $carreras = $informe->pluck('carrera')->unique();
 
