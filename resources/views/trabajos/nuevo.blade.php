@@ -180,16 +180,21 @@
             <option value="Licenciatura en Periodismo y Comunicación Audiovisual">Licenciatura en Periodismo y Comunicación Audiovisual</option>
             <option value="Licenciatura en Idioma Inglés">Licenciatura en Idioma Inglés</option>
             <option value="Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica">Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica</option>
+            <option value="Licenciatura en Ciencias de la Educación con Especialidad en educacion parvularia">Licenciatura en Ciencias de la Educación con Especialidad en Educación Parvularia</option>
             <option value="Licenciatura en Ciencias de la Educación con Especialidad en Idioma Inglés">Licenciatura en Ciencias de la Educación con Especialidad en Idioma Inglés</option>
             <option value="Licenciatura en Ciencias Religiosas">Licenciatura en Ciencias Religiosas</option>
             <option value="Licenciatura en Idioma Inglés (Semi presencial)">Licenciatura en Idioma Inglés (Semi presencial)</option>
             <option value="Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)">Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)</option>
-            <option value="Licenciatura en Diseño Gráfico Publicitario">Licenciatura en Diseño Gráfico Publicitario</option>
+            <option value="Licenciatura en Ciencias de la Educación Especialidad en Matemática">Licenciatura en Ciencias de la Educación Especialidad en Matemática</option>
             <option value="Licenciatura en Ciencias Jurídicas">Licenciatura en Ciencias Jurídicas</option>
-            <option value="Licenciatura en Periodismo y Comunicación Audiovisual">Licenciatura en Periodismo y Comunicación Audiovisual</option>
-            <option value="Licenciatura en Ciencias Religiosas">Licenciatura en Ciencias Religiosas</option>
             <option value="Maestría en Asesoría Educativa">Maestría en Asesoría Educativa</option>
+            <option value="Maestría en Dirección Estratégica de Empresas">Maestría en Dirección Estratégica de Empresas</option>
+            <option value="Maestría en Gerencia y Gestión Ambiental">Maestría en Gerencia y Gestión Ambiental</option>
+            <option value="Maestría en Investigación Educativa">Maestría en Investigación Educativa</option>
             <option value="Maestría en Seguridad Informática">Maestría en Seguridad Informática</option>
+            <option value="Doctorado en Educación">Doctorado en Educación</option>
+            <option value="Técnico en Lácteos y Cárnicos">Técnico en Lácteos y Cárnicos</option>
+            <option value="Técnico en Gestión y Desarrollo Turístico">Técnico en Gestión y Desarrollo Turístico</option>
             </select>
         </div>
 

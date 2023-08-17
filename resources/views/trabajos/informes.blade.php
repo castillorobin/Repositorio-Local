@@ -48,7 +48,18 @@
         background-color: #4CAF50;
         color: white;
         border: none;
-        padding: 8px 12px; /* Ajustar el tamaño del botón */
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px; /* Separación entre botones */
+    }
+
+    /* Estilo para el botón de limpiar filtros */
+    .btn-clear-filters {
+        background-color: #FF5733;
+        color: white;
+        border: none;
+        padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
     }
@@ -93,6 +104,37 @@
         margin-top: 30px;
         color: #666;
     }
+
+    .filter-group {
+        margin-top: 10px; /* Ajusta según necesites */
+    }
+
+    .bottom-left-buttons {
+        position: fixed;
+        bottom: 10px;
+        right: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .custom-button {
+        background-color: #9D2720;
+        color: #F6C03D;
+        border: none;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .custom-button:hover {
+        background-color: #F6C03D;
+        color: #9D2720;
+        transition: 0.3s;
+    }
 </style>
 
 <div class="container">
@@ -109,6 +151,7 @@
                 <option value="investigacion" @if($tipo === 'investigacion') selected @endif>Investigación</option>
                 <option value="tesis" @if($tipo === 'tesis') selected @endif>Tesis</option>
                 <option value="proyecto" @if($tipo === 'proyecto') selected @endif>Proyecto</option>
+                <option value="monografia" @if($tipo === 'monografia') selected @endif>monografia</option>
             </select>
         </div>
 
@@ -145,6 +188,8 @@
 
         <!-- Estilo para el botón de filtrar -->
         <button type="submit" class="btn-filter">Filtrar</button>
+        <button type="button" class="btn-clear-filters" id="btn-clear-filters">Limpiar Filtros</button>
+
     </form>
 
     <!-- Mostrar el informe resultante -->
@@ -183,35 +228,25 @@
     <p class="no-results-message">No se encontraron resultados para los filtros seleccionados.</p>
     @endif
 </div>
-<style>
-    .bottom-left-buttons {
-        position: fixed;
-        bottom: 10px;
-        right: 5px;
-    }
-
-    .custom-button {
-        background-color: #9D2720;
-        color: #F6C03D;
-        border: none;
-        padding: 8px 16px;
-        margin: 5px;
-        border-radius: 20px;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    .custom-button:hover {
-        background-color: #F6C03D;
-        color: #9D2720;
-        transition: 0.3s;
-    }
-</style>
-
 <div class="bottom-left-buttons">
     <a href="{{ route('trabajos.index') }}" class="custom-button">Listado</a>
     <button class="custom-button" onclick="window.scrollTo(0, 0)">InicioPag</button>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const clearFiltersButton = document.getElementById("btn-clear-filters");
+
+        clearFiltersButton.addEventListener("click", function () {
+            // Resetear los valores de los selectores de filtro a sus valores iniciales
+            document.getElementById("tipo").value = "";
+            document.getElementById("anio").value = "";
+            document.getElementById("facultad").value = "";
+            document.getElementById("carrera").value = "";
+            
+            // Redirigir a la ruta 'informes'
+            window.location.href = "{{ route('informes') }}";
+        });
+    });
+</script>
 
 @endsection

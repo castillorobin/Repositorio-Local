@@ -73,62 +73,61 @@ class TrabajosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-{
-    $trabajo = Trabajos::find($id);
-    $facultades = ['Facultad de Ingeniería y Arquitectura', 'Facultad de Ciencias y Humanidades', 'Facultad de Ciencias de la Salud', 'Facultad de Ciencias Empresariales', 'Escuela de Posgrados'];
-    $carreras = [
-        'Licenciatura en Idioma Ingles',
-        'Licenciatura en periodismo y comunicación audiovisual',
-        'Licenciatura en enfermeria',
-        'Tecnico en enfermeria',
-        'Licenciatura en ciencias de la educacion con especialidad en idioma inglés',
-        'Doctorado en medicina',
-        'Licenciatura en ciencias de la educacion con especialidad en educacion basica',
-        'Profesorado en educacion basica para primero y segundo ciclo',
-        'Profesorado en educación parvularia',
-        'Licenciatura en ciencias religiosas',
-        'Licenciatura en ciencias de la educacion con especialidad en educacion parvularia',
-        'Licenciatura en educacion inicial y parvularia',
-        'Licenciatura en ciencias de la educacion especialidad en matematica semipresencial',
-        'Licenciatura en ciencias de la educacion especialidad en direccion y administracion escolar - semipresencial',
-        'Licenciatura en ciencias de la educacion especialidad en educacion basica semipresencial',
-        'Licenciatura en idioma ingles (semipresencial)',
-        'Profesorado en educacion basica para primero y segundo ciclos',
-        'Profesorado y licenciatura en educacion inicial y parvularia',
-        'Licenciatura en idioma ingles',
-        'Licenciatura en diseño grafico publicitario',
-        'Ingenieria en tecnologia y procesamiento de alimentos',
-        'Licenciatura en ciencias juridicas',
-        'Licenciatura en sistemas informaticos administrativos',
-        'Ingenieria industrial',
-        'Arquitectura',
-        'Ingenieria civil',
-        'Ingenieria civil saneamiento ambiental',
-        'Ingenieria en sistemas informaticos',
-        'Ingenieria agronomica',
-        'Ingenieria en telecomunicaciones y redes',
-        'Ingenieria en desarrollo de software',
-        'Curso ccna academia de redes cisco unicaes',
-        'Licenciatura en administracion de empresas',
-        'Licenciatura en mercadeo y negocios internacionales',
-        'Licenciatura en gestion y desarrollo turistico',
-        'Licenciatura en contaduria publica',
-        'Postgrado en estrategias para la competitividad',
-        'Maestria en direccion estrategica de empresas',
-        'Maestria en asesoria educativa',
-        'Maestria en atencion integral de la primera infancia',
-        'Maestria en gerencia y gestion ambiental',
-        'Maestria en gestion y desarrollo turistico',
-        'Curso de formacion pedagica para profesionales',
-        'Licenciatura en administracion de empresas - semipresencial',
-        'Maestría en Seguridad Informática',
-        'Licenciatura en Ciencias de la Educación Especialidad en Matemática (Ingreso solo por equivalencias)',
-        'Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)',
-        'Maestría en Asesoría Educativa'
-    ];
+    {
+        $trabajo = Trabajos::find($id);
+        $facultades = ['Facultad de Ingeniería y Arquitectura', 'Facultad de Ciencias y Humanidades', 'Facultad de Ciencias de la Salud', 'Facultad de Ciencias Empresariales', 'Escuela de Posgrados'];
+        $carreras = [
+            'Licenciatura en Idioma Ingles',
+            'Licenciatura en Administración de Empresas',
+            'Licenciatura en Administración de Empresas (Semipresencial)',
+            'Licenciatura en Sistemas Informáticos Administrativos',
+            'Licenciatura en Contaduría Pública',
+            'Licenciatura en Mercadeo y Negocios Internacionales',
+            'Licenciatura en Gestión y Desarrollo Turístico',
+            'Licenciatura en Gestión de Negocios Digitales',
+            'Licenciatura en Relaciones Internacionales y Comercio Exterior',
+            'Doctorado en Medicina',
+            'Licenciatura en Enfermería',
+            'Técnico en Enfermería',
+            'Licenciatura en Nutrición y Dietética',
+            'Ingeniería Química',
+            'Ingeniería Mecánica',
+            'Ingeniería en Desarrollo de Software',
+            'Ingeniería en Tecnología y Procesamiento de Alimentos (Semipresencial)',
+            'Ingeniería en Telecomunicaciones y Redes',
+            'Arquitectura',
+            'Ingeniería Civil',
+            'Ingeniería en Sistemas Informáticos',
+            'Ingeniería Agronómica',
+            'Ingeniería Industrial',
+            'Ingeniería Eléctrica',
+            'Ingeniería en procesos textiles',
+            'Técnico en textiles',
+            'Licenciatura en Diseño Gráfico Publicitario',
+            'Licenciatura en Ciencias Jurídicas',
+            'Licenciatura en Periodismo y Comunicación Audiovisual',
+            'Licenciatura en Idioma Inglés',
+            'Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica',
+            'Licenciatura en Ciencias de la Educación con Especialidad en Educación Parvularia',
+            'Licenciatura en Ciencias de la Educación con Especialidad en Idioma Inglés',
+            'Licenciatura en Ciencias Religiosas',
+            'Licenciatura en Idioma Inglés (Semi presencial)',
+            'Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)',
+            'Licenciatura en Ciencias de la Educación Especialidad en Matemática',
+            'Licenciatura en Ciencias Jurídicas',
+            'Maestría en Asesoría Educativa',
+            'Maestría en Dirección Estratégica de Empresas',
+            'Maestría en Gerencia y Gestión Ambiental',
+            'Maestría en Investigación Educativa',
+            'Maestría en Seguridad Informática',
+            'Doctorado en Educación',
+            'Técnico en Lácteos y Cárnicos',
+            'Técnico en Gestión y Desarrollo Turístico'
+        ];
+       
 
-    return view('trabajos.editar', compact('trabajo', 'facultades', 'carreras'));
-}
+        return view('trabajos.editar', compact('trabajo', 'facultades', 'carreras'));
+    }
 
 
     /**

@@ -54,7 +54,7 @@ class InformeExport implements FromQuery, WithHeadings, WithMapping
             'Autor',
             'Facultad',
             'Carrera',
-            'Archivo', // Cambiamos el campo "Documento" por "Archivo"
+            
         ];
     }
 
@@ -67,7 +67,6 @@ class InformeExport implements FromQuery, WithHeadings, WithMapping
             $trabajo->autor,
             $trabajo->facultad,
             $trabajo->carrera,
-            $trabajo->archivo, // Cambiamos el campo "Documento" por "Archivo"
         ];
     }
 }

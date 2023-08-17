@@ -95,7 +95,7 @@
                 <img src="imagenes/pasante.jpg" alt="" class="logo">
                 <div class="card-body">
                     <div class="centered-elements">
-                        <h5 class="card-title">Listado De Pasantia</h5>
+                        <h5 class="card-title">Pasantia</h5>
                         <div class="text-center">
                             <a href="{{ route('trabajos.pasantiasIndex') }}" class="btn">Ir a listado pasantia</a>
                         </div>
@@ -108,7 +108,7 @@
                 <img src="imagenes/poyecto.png" alt="" class="logo">
                 <div class="card-body">
                     <div class="centered-elements">
-                        <h5 class="card-title">Listado De Proyectos</h5>
+                        <h5 class="card-title">Proyectos</h5>
                         <div class="text-center">
                             <a href="{{ route('trabajos.proyectoIndex') }}" class="btn">Ir a listado proyectos</a>
                         </div>
@@ -121,7 +121,7 @@
                 <img src="imagenes/mono.png" alt="" class="logo">
                 <div class="card-body">
                     <div class="centered-elements">
-                        <h5 class="card-title">Listado De Monografias</h5>
+                        <h5 class="card-title">Monografias</h5>
                         <div class="text-center">
                             <a href="{{ route('trabajos.monografiaIndex') }}" class="btn">Ir a listado Monografias</a>
                         </div>
@@ -134,7 +134,7 @@
                 <img src="imagenes/in.jpg" alt="" class="logo">
                 <div class="card-body">
                     <div class="centered-elements">
-                        <h5 class="card-title">Listado De Investigacion</h5>
+                        <h5 class="card-title">Investigacion</h5>
                         <div class="text-center">
                             <a href="{{ route('trabajos.investigacionIndex') }}" class="btn">Ir a listado investigaciones</a>
                         </div>
@@ -147,7 +147,7 @@
                 <img src="imagenes/inve.jpg" alt="" class="logo">
                 <div class="card-body">
                     <div class="centered-elements">
-                        <h5 class="card-title">Listado De todas Tesis</h5>
+                        <h5 class="card-title">Tesis</h5>
                         <div class="text-center">
                             <a href="{{ route('trabajos.tesisIndex') }}" class="btn">Ir a listado 
                                 <br>
