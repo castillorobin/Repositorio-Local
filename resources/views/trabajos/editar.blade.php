@@ -144,6 +144,7 @@
             </div>
             <div class="flex-grow-1 ms-1">
                 <label for="facultad" class="form-label">Facultad</label>
+
                 <select name="facultad" class="form-select">
                     @foreach ($facultades as $facultad)
                     <option value="{{ $facultad }}" {{ $trabajo->facultad === $facultad ? 'selected' : '' }}>{{ $facultad }}</option>
@@ -152,7 +153,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <<div class="form-group">
             <label for="carrera" class="form-label">Carrera</label>
             <select name="carrera" class="form-select">
                 @foreach ($carreras as $carrera)

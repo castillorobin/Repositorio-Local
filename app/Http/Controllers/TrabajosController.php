@@ -77,7 +77,6 @@ class TrabajosController extends Controller
         $trabajo = Trabajos::find($id);
         $facultades = ['Facultad de Ingeniería y Arquitectura', 'Facultad de Ciencias y Humanidades', 'Facultad de Ciencias de la Salud', 'Facultad de Ciencias Empresariales', 'Escuela de Posgrados'];
         $carreras = [
-            'Licenciatura en Idioma Ingles',
             'Licenciatura en Administración de Empresas',
             'Licenciatura en Administración de Empresas (Semipresencial)',
             'Licenciatura en Sistemas Informáticos Administrativos',
@@ -114,12 +113,13 @@ class TrabajosController extends Controller
             'Licenciatura en Idioma Inglés (Semi presencial)',
             'Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)',
             'Licenciatura en Ciencias de la Educación Especialidad en Matemática',
-            'Licenciatura en Ciencias Jurídicas',
+            'Licenciatura en Ciencias de la Educación Especialidad en Matemática (Semipresencial)',
             'Maestría en Asesoría Educativa',
             'Maestría en Dirección Estratégica de Empresas',
             'Maestría en Gerencia y Gestión Ambiental',
             'Maestría en Investigación Educativa',
             'Maestría en Seguridad Informática',
+            'Maestría en Atención Integral de la Primera Infancia',
             'Doctorado en Educación',
             'Técnico en Lácteos y Cárnicos',
             'Técnico en Gestión y Desarrollo Turístico'

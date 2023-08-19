@@ -149,7 +149,7 @@
         <div class="form-group">
             <label for="carrera" class="form-label">Carrera</label>
             <select name="carrera" class="form-select">
-            <option selected>Licenciatura en Idioma Ingles</option>
+            
             <option value="Licenciatura en Administración de Empresas">Licenciatura en Administración de Empresas</option>
             <option value="Licenciatura en Administración de Empresas (Semipresencial)">Licenciatura en Administración de Empresas (Semipresencial)</option>
             <option value="Licenciatura en Sistemas Informáticos Administrativos">Licenciatura en Sistemas Informáticos Administrativos</option>
@@ -186,12 +186,13 @@
             <option value="Licenciatura en Idioma Inglés (Semi presencial)">Licenciatura en Idioma Inglés (Semi presencial)</option>
             <option value="Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)">Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)</option>
             <option value="Licenciatura en Ciencias de la Educación Especialidad en Matemática">Licenciatura en Ciencias de la Educación Especialidad en Matemática</option>
-            <option value="Licenciatura en Ciencias Jurídicas">Licenciatura en Ciencias Jurídicas</option>
+            <option value="Licenciatura en Ciencias de la Educación Especialidad en Matemática">Licenciatura en Ciencias de la Educación Especialidad en Matemática (Semipresencial)</option>
             <option value="Maestría en Asesoría Educativa">Maestría en Asesoría Educativa</option>
             <option value="Maestría en Dirección Estratégica de Empresas">Maestría en Dirección Estratégica de Empresas</option>
             <option value="Maestría en Gerencia y Gestión Ambiental">Maestría en Gerencia y Gestión Ambiental</option>
             <option value="Maestría en Investigación Educativa">Maestría en Investigación Educativa</option>
             <option value="Maestría en Seguridad Informática">Maestría en Seguridad Informática</option>
+            <option value="Maestría en Atención Integral de la Primera Infancia">Maestría en Atención Integral de la Primera Infancia</option>
             <option value="Doctorado en Educación">Doctorado en Educación</option>
             <option value="Técnico en Lácteos y Cárnicos">Técnico en Lácteos y Cárnicos</option>
             <option value="Técnico en Gestión y Desarrollo Turístico">Técnico en Gestión y Desarrollo Turístico</option>
