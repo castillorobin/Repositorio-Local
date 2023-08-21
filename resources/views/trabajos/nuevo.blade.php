@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <style>
     body {
         font-family: Arial, sans-serif;
