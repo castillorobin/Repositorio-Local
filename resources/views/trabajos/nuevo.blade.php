@@ -117,7 +117,7 @@
                 <option value="Investigacion">Investigacion</option>
                 <option value="Tesis">Tesis</option>
                 <option value="proyecto">Proyecto</option>
-                <option value="monografia">Monografia</option>
+                <option value="Monografia">Monografia</option>
             </select>
         </div>
 
