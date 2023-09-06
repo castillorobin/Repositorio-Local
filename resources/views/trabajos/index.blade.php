@@ -7,11 +7,12 @@
     <br>
 
     <style>
-    .row {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
+  .row {
+    display: flex;
+    flex-wrap: nowrap; /* Evita que se rompa en varias líneas */
+    justify-content: center; 
+    
+}
 
     .col-md-3 {
         flex: 0 0 20%;
@@ -151,7 +152,20 @@
                         <div class="text-center">
                             <a href="{{ route('trabajos.tesisIndex') }}" class="btn">Ir a listado 
                                 <br>
-                                tesis</a>
+                                Tesis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="imagenes/news.jpg" alt="" class="logo">
+                <div class="card-body">
+                    <div class="centered-elements">
+                        <h5 class="card-title">Diarios Oficiales</h5>
+                        <div class="text-center">
+                            <a href="{{ route('diarios.index') }}" class="btn">Ir a listado de Diarios Oficiales</a>
                         </div>
                     </div>
                 </div>
