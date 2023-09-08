@@ -10,11 +10,29 @@ use Illuminate\Support\Facades\Storage;
 
 class DiariosController extends Controller
 {
-    public function index()
-{
-    $diarios = DB::table('diarios')->get(); // Consulta para obtener todos los registros
-    return view('diarios.diarios', ['diarios' => $diarios]);
-}
+    public function index(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        // Realizar la búsqueda en la base de datos según el término de búsqueda
+        if ($searchTerm) {
+            $diarios = Diario::where(function ($query) use ($searchTerm) {
+                $query->where('nombre', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('numero_diario', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('descripcion', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('tomo', 'like', '%' . $searchTerm . '%') // Campo tomo agregado
+                    ->orWhere('fecha', 'like', '%' . $searchTerm . '%') // Campo fecha agregado
+                    ->orWhere('anio', 'like', '%' . $searchTerm . '%'); // Campo anio agregado
+            })->get();  
+        } else {
+            // Si no se ha ingresado un término de búsqueda, obtener todos los diarios
+            $diarios = Diario::paginate(10);
+        }
+
+        // Retornar una colección de resultados
+        return view('diarios.diarios', compact('diarios'));
+    }
+
 
 
     public function create()
@@ -32,15 +50,13 @@ class DiariosController extends Controller
     
         if ($request->hasFile('archivo')) {
             $diarioData['archivo'] = $request->file('archivo')->getClientOriginalName();
-            $request->file('archivo')->storeAs('archivosPDF', $diarioData['archivo']);
+            $request->file('archivo')->storeAs('archivos', $diarioData['archivo']);
         }
     
         Diario::create($diarioData);
     
-        return redirect()->route('diarios.index');
+        return redirect()->route('trabajos.index'); 
     }
-
-
 
     public function edit($id)
     {
@@ -89,7 +105,7 @@ class DiariosController extends Controller
         }
     
         $nombreArchivo = $diario->archivo;
-        $rutaArchivo = storage_path('app/archivos/' . $nombreArchivo);
+        $rutaArchivo = storage_path('app\archivos/' . $nombreArchivo);
     
         if (Storage::exists('archivos/' . $nombreArchivo)) {
             return response()->download($rutaArchivo, $nombreArchivo);
@@ -99,4 +115,6 @@ class DiariosController extends Controller
     }
     
     
+    
+     
 }
