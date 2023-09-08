@@ -105,7 +105,8 @@ class DiariosController extends Controller
         }
     
         $nombreArchivo = $diario->archivo;
-        $rutaArchivo = storage_path('app\archivos/' . $nombreArchivo);
+        $rutaArchivo = storage_path('app/archivos/' . $nombreArchivo);
+
     
         if (Storage::exists('archivos/' . $nombreArchivo)) {
             return response()->download($rutaArchivo, $nombreArchivo);
