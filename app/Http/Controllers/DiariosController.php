@@ -26,7 +26,7 @@ class DiariosController extends Controller
             })->get();  
         } else {
             // Si no se ha ingresado un término de búsqueda, obtener todos los diarios
-            $diarios = Diario::paginate(10);
+            $diarios = Diario::paginate(1000000);
         }
 
         // Retornar una colección de resultados
