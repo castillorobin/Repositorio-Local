@@ -84,11 +84,13 @@
     </head>
     <body>
     <div id="app">
+        
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <a class="navbar-brand " href="{{ route('home') }}">
+                <img src="{{ asset('imagenes/logou.png') }}" alt="Logo" style="width: 75px;"> Biblioteca Miguel de Cervantes
+            </a>
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    <img src="imagenes/logou.png" alt="" style="width: 75px;"> Repositorio Local
-                </a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

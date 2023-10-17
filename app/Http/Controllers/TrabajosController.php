@@ -109,6 +109,7 @@ class TrabajosController extends Controller
             'Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica',
             'Licenciatura en Ciencias de la Educación con Especialidad en Educación Parvularia',
             'Licenciatura en Ciencias de la Educación con Especialidad en Idioma Inglés',
+            'Licenciatura en Ciencias de la Educación con Especialidad Direccion y Administracion Escolar',
             'Licenciatura en Ciencias Religiosas',
             'Licenciatura en Idioma Inglés (Semi presencial)',
             'Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)',

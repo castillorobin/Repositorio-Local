@@ -109,7 +109,7 @@
     }
 </style>
 
-<div class="container">
+<div class="container" >
     <h1>Editar Trabajo</h1>
     <form method="POST" action="{{ route('trabajos.update', ['trabajo' => $trabajo->id]) }}" role="form" enctype="multipart/form-data">
         @method("PUT")
