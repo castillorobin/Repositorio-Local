@@ -227,6 +227,7 @@
     @elseif(isset($informe) && count($informe) == 0)
     <p class="no-results-message">No se encontraron resultados para los filtros seleccionados.</p>
     @endif
+    
 </div>
 <div class="bottom-left-buttons">
     <a href="{{ route('trabajos.index') }}" class="custom-button">Listado</a>

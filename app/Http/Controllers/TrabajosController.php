@@ -197,26 +197,25 @@ class TrabajosController extends Controller
     
         
     public function search(Request $request, $tipo) {
-    $searchTerm = $request->input('search');
+        $searchTerm = $request->input('search');
     
-    // Realizar la búsqueda en la base de datos según el término de búsqueda y el tipo de trabajo
-    if ($searchTerm) {
-        $trabajo = Trabajos::where(function ($query) use ($searchTerm) {
-            $query->where('titulo', 'like', '%' . $searchTerm . '%')
-                  ->orWhere('autor', 'like', '%' . $searchTerm . '%')
-                  ->orWhere('facultad', 'like', '%' . $searchTerm . '%')
-                  ->orWhere('carrera', 'like', '%' . $searchTerm . '%');
-        })
-        ->where('tipo', $tipo) // Agregar esta condición para filtrar por tipo de trabajo
-        ->get();
-    } else {
-        // Si no se ha ingresado un término de búsqueda, obtener todos los trabajos del tipo especificado
-        $trabajo = Trabajos::where('tipo', $tipo)->get();
+        $query = Trabajos::query();
+        $query->where('tipo', $tipo); // Filtrar por tipo 'proyecto'
+    
+        if ($searchTerm) {
+            $query->where(function ($query) use ($searchTerm) {
+                $query->where('titulo', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('autor', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('facultad', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('carrera', 'like', '%' . $searchTerm . '%');
+            });
+        }
+    
+        $trabajo = $query->paginate(25); // Paginar el resultado
+    
+        return $trabajo;
     }
-
-    // Retornar una colección de resultados
-    return $trabajo;
-}
+    
 
     public function pasantiasIndex(Request $request)
     {
@@ -250,13 +249,12 @@ class TrabajosController extends Controller
 
     public function proyectoIndex(Request $request)
     {
-       
         $tipo = 'proyecto';
         $trabajo = $this->search($request, $tipo);
     
-
         return view('trabajos.proyecto', compact('trabajo', 'tipo'));
     }
+    
     
     public function monografiaIndex(Request $request)
     {

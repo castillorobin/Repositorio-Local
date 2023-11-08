@@ -58,6 +58,43 @@
             </div>
         </div>
     </div>
+        <div class="d-flex justify-content-center mt-3">
+        @if ($trabajo->onFirstPage())
+            <span class="btn btn-primary navbar-button">« Previous</span>
+        @else
+            <a href="{{ $trabajo->previousPageUrl() }}" class="btn btn-primary navbar-button">« Previous</a>
+        @endif
+        <span class="mx-3">
+            @php
+                $start = max($trabajo->currentPage() - 5, 1);
+                $end = min($start + 9, $trabajo->lastPage());
+
+                if ($end - $start < 9) {
+                    $start = max($end - 9, 1);
+                }
+            @endphp
+
+            @if ($start > 1)
+                <a href="{{ $trabajo->url(1) }}" class="btn btn-secondary navbar-button">1</a>
+                <span class="navbar-button">...</span>
+            @endif
+
+            @foreach ($trabajo->getUrlRange($start, $end) as $page => $url)
+                <a href="{{ $url }}" class="btn {{ $page == $trabajo->currentPage() ? 'btn-primary navbar-button' : 'btn-secondary navbar-button' }}">{{ $page }}</a>
+            @endforeach
+
+            @if ($end < $trabajo->lastPage())
+                <span class="navbar-button">...</span>
+                <a href="{{ $trabajo->url($trabajo->lastPage()) }}" class="btn btn-secondary navbar-button">{{ $trabajo->lastPage() }}</a>
+            @endif
+        </span>
+
+        @if ($trabajo->hasMorePages())
+            <a href="{{ $trabajo->nextPageUrl() }}" class="btn btn-secondary navbar-button">Next »</a>
+        @else
+            <span class="btn btn-secondary navbar-button">Next »</span>
+        @endif
+    </div>
 </div>
 <style>
     .bottom-left-buttons {

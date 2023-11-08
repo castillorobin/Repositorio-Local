@@ -57,10 +57,30 @@
                     </tbody>
                 </table>
             </div>
+        
         </div>
     </div>
-</div>
+    <div class="d-flex justify-content-center mt-3">
+            @if ($diarios->onFirstPage())
+                <span class="btn btn-primary navbar-button">« Previous</span>
+            @else
+                <a href="{{ $diarios->previousPageUrl() }}" class="btn btn-primary navbar-button">« Previous</a>
+            @endif
 
+            <span class="mx-3">
+                @foreach ($diarios->getUrlRange(1, $diarios->lastPage()) as $page => $url)
+                    <a href="{{ $url }}" class="btn {{ $page == $diarios->currentPage() ? 'btn-primary navbar-button' : 'btn-secondary navbar-button' }}">{{ $page }}</a>
+                @endforeach
+            </span>
+
+            @if ($diarios->hasMorePages())
+                <a href="{{ $diarios->nextPageUrl() }}" class="btn btn-primary navbar-button">Next »</a>
+            @else
+                <span class="btn btn-primary navbar-button">Next »</span>
+            @endif
+        </div>
+
+</div>
 <style>
 .bottom-left-buttons {
     position: fixed;

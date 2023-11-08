@@ -13,28 +13,23 @@ class DiariosController extends Controller
     public function index(Request $request)
     {
         $searchTerm = $request->input('search');
-
-        // Realizar la búsqueda en la base de datos según el término de búsqueda
+    
+        $diariosQuery = Diario::query();
+    
         if ($searchTerm) {
-            $diarios = Diario::where(function ($query) use ($searchTerm) {
-                $query->where('nombre', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('numero_diario', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('descripcion', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('tomo', 'like', '%' . $searchTerm . '%') // Campo tomo agregado
-                    ->orWhere('fecha', 'like', '%' . $searchTerm . '%') // Campo fecha agregado
-                    ->orWhere('anio', 'like', '%' . $searchTerm . '%'); // Campo anio agregado
-            })->get();  
-        } else {
-            // Si no se ha ingresado un término de búsqueda, obtener todos los diarios
-            $diarios = Diario::paginate(1000000);
+            $diariosQuery->where('nombre', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('numero_diario', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('descripcion', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('tomo', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('fecha', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('anio', 'like', '%' . $searchTerm . '%');
         }
-
-        // Retornar una colección de resultados
+        $diarios = $diariosQuery->paginate(10); 
+    
         return view('diarios.diarios', compact('diarios'));
     }
-
-
-
+    
+    
     public function create()
     {
         return view('diarios.creatediarios');
