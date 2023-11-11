@@ -171,6 +171,20 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3">
+        <div class="card">
+            <img src="imagenes/plan.jpg" alt="" class="logo">
+            <div class="card-body">
+                <div class="centered-elements">
+                    <h5 class="card-title">Plan De Estudios</h5>
+                    <div class="text-center">
+                        <a href="{{ route('planes.index') }}" class="btn">Ir a listado de Plan de estudios</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
 </div>
 

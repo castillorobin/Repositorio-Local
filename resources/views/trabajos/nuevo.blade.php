@@ -151,7 +151,6 @@
         <div class="form-group">
             <label for="carrera" class="form-label">Carrera</label>
             <select name="carrera" class="form-select">
-            
             <option value="Licenciatura en Administración de Empresas">Licenciatura en Administración de Empresas</option>
             <option value="Licenciatura en Administración de Empresas (Semipresencial)">Licenciatura en Administración de Empresas (Semipresencial)</option>
             <option value="Licenciatura en Sistemas Informáticos Administrativos">Licenciatura en Sistemas Informáticos Administrativos</option>
@@ -184,7 +183,7 @@
             <option value="Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica">Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica</option>
             <option value="Licenciatura en Ciencias de la Educación con Especialidad en educacion parvularia">Licenciatura en Ciencias de la Educación con Especialidad en Educación Parvularia</option>
             <option value="Licenciatura en Ciencias de la Educación con Especialidad en Idioma Inglés">Licenciatura en Ciencias de la Educación con Especialidad en Idioma Inglés</option>
-             <option value="Licenciatura en Ciencias de la Educación con Especialidad Direccion y Administracion Escolar">Licenciatura en Ciencias de la Educación con Especialidad en Direccion y Administracion Escolar</option>
+            <option value="Licenciatura en Ciencias de la Educación con Especialidad Direccion y Administracion Escolar">Licenciatura en Ciencias de la Educación con Especialidad en Direccion y Administracion Escolar</option>
             <option value="Licenciatura en Ciencias Religiosas">Licenciatura en Ciencias Religiosas</option>
             <option value="Licenciatura en Idioma Inglés (Semi presencial)">Licenciatura en Idioma Inglés (Semi presencial)</option>
             <option value="Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)">Licenciatura en Ciencias de la Educación con Especialidad en Educación Básica (Semi presencial)</option>
@@ -217,6 +216,6 @@
             <a href="{{ url('trabajos') }}" class="ms-1 form-btn form-btn-secondary text-center">Regresar</a>
         </div>
     </form>
-</div>
+</div>  
 
 @endsection

@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TrabajosController;
 use App\Http\Controllers\DiariosController;
+use App\Http\Controllers\PlanDeEstudiosController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -35,6 +36,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/agregar', function () {
         return view('agregar');
     })->name('agregar');
+    
+    //Rutas para planes de estudios,
+
+    // routes/web.php
+
+    Route::resource('planes', PlanDeEstudiosController::class);
+    Route::get('/planes/descargar/{id}', 'App\Http\Controllers\PlanDeEstudiosController@descargarArchivo')->name('planes.descargar');
+
+
     
 
     Route::post('/logout', function () {

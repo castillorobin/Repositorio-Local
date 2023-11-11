@@ -29,6 +29,17 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4"> <!-- Reducimos el ancho de las columnas a col-md-4 -->
+            <div class="card">
+                <div class="card-body">
+                    <img src="imagenes/plan.jpg" class="logo" alt="" width="100" style="margin: 0 auto;"> <!-- Reducimos el ancho de la imagen -->
+                    <h5 class="card-title text-center">Agregar Planes de trabajo</h5>
+                    <div class="text-center">
+                        <a href="{{ route('planes.create') }}" class="btn">Agregar plan de Trabajo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
