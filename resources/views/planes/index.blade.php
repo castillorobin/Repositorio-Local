@@ -3,7 +3,16 @@
 @section('content')
     <div class="container">
         <h1 class="text-center">Planes de Estudio</h1>
-
+        <br>
+        <div class="row justify-content-end">
+            <div class="col-md-4">
+                <form action="{{ route('planes.index') }}" class="d-flex" method="GET">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" id="txtSearch" name="search">
+                    <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+        <br>
         <table class="table table-bordered table-striped table-hover">
             <thead class="thead-dark">
                 <tr>

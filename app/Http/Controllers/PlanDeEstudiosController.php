@@ -15,11 +15,24 @@ class PlanDeEstudiosController extends Controller
      */
    // PlanDeEstudiosController.php
 
-    public function index()
+   public function index(Request $request)
     {
-        $planes = PlanDeEstudio::paginate(1); // O el número que desees por página
-        return view('planes.index', ['planes' => $planes]);
+        $searchTerm = $request->input('search');
+        
+        $planesQuery = PlanDeEstudio::query();
+        
+        if ($searchTerm) {
+            $planesQuery->where('tipo', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('facultad', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('carrera', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('modalidad', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('periodo', 'like', '%' . $searchTerm . '%');
+        }
+        $planes = $planesQuery->paginate(25); 
+
+        return view('planes.index', compact('planes'));
     }
+
 
     /**
      * Show the form for creating a new resource.
